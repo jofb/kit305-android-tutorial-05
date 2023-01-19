@@ -1,5 +1,6 @@
 package au.edu.utas.kit305.tutorial05
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity()
 {
     private lateinit var ui : ActivityMainBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ui = ActivityMainBinding.inflate(layoutInflater)
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity()
         ui.myList.layoutManager = LinearLayoutManager(this)
     }
 
-    inner class MovieHolder(var ui: MyListItemBinding) : RecyclerView.ViewHolder(ui.root) {}
+    inner class MovieHolder(private var ui: MyListItemBinding) : RecyclerView.ViewHolder(ui.root) {}
 
     inner class MovieAdapter(private val movies: MutableList<Movie>) : RecyclerView.Adapter<MovieHolder>()
     {
